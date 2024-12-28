@@ -30,11 +30,6 @@ import { useAppStore } from "../providers/app-provider";
 
 // This is sample data.
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   teams: [
     {
       name: "Acme Inc",
@@ -60,8 +55,8 @@ const data = {
       isActive: true,
       items: [
         {
-          title: "History",
-          url: "#",
+          title: "Subjects",
+          url: "/subjects",
         },
         {
           title: "Starred",
@@ -141,8 +136,8 @@ const data = {
   ],
   projects: [
     {
-      name: "Design Engineering",
-      url: "#",
+      name: "Subjects",
+      url: "/subjects",
       icon: Frame,
     },
     {
@@ -167,7 +162,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>{isAuth ? <NavUser /> : null}</SidebarFooter>
       <SidebarRail />

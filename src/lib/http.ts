@@ -154,9 +154,12 @@ const request = async <Response>(
   if (isClient) {
     const normalizeUrl = normalizePath(url);
     if (normalizeUrl === "api/auth/login") {
-      const { access_token, refresh_token } = payload?.payload?.result;
-      localStorage.setItem("accessToken", access_token);
-      localStorage.setItem("refreshToken", refresh_token);
+      const accessToken = payload?.payload?.access_token;
+      const refreshToken = payload?.payload?.refresh_token;
+      if (accessToken && refreshToken) {
+        localStorage.setItem("accessToken", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+      }
     } else if (normalizeUrl === "api/auth/logout") {
       localStorage.removeItem("accessToken");
       localStorage.removeItem("refreshToken");

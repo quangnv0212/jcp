@@ -35,6 +35,7 @@ export const handleErrorApi = ({
       });
     });
   } else {
+    console.log(error);
     toast.error(error?.payload?.message ?? "Lỗi không xác định");
   }
 };

@@ -33,11 +33,14 @@ export default function LoginForm() {
   });
   const onSubmit = async (data: LoginBodyType) => {
     if (loginMutation.isPending) return;
+
     try {
       const result = await loginMutation.mutateAsync(data);
-      setIsAuth(true);
-      toast.success(result.payload.message);
-      router.push("/");
+      if (result.payload?.payload?.access_token) {
+        setIsAuth(true);
+        toast.success(result.payload.message);
+        router.push("/");
+      }
     } catch (error: any) {
       handleErrorApi({
         error,
